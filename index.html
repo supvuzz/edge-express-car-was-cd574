@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" c>
+    <title>Express Exterior Car Wash Services in Woodbridge, VA | Edge Express Car Wash</title>
+    <meta name="description" c>
+    <meta name="keywords" c>
+    <meta name="robots" c>
+    <meta name="author" c>
+    
+    <!-- Open Graph -->
+    <meta property="og:type" c>
+    <meta property="og:url" c>
+    <meta property="og:title" c>
+    <meta property="og:description" c>
+    <meta property="og:site_name" c>
+    <meta property="og:image" c>
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" c>
+    <meta property="twitter:url" c>
+    <meta property="twitter:title" c>
+    <meta property="twitter:description" c>
+    <meta property="twitter:image" c>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://edgeexpresscarwash.com//express-exterior-car-wash-in-woodbridge">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FAQ Structured Data -->
+    
+    
+    <style>
+        
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', sans-serif;
+        line-height: 1.6;
+        color: #000000;
+        background: #ffffff;
+        font-size: 16px;
+        font-weight: 400;
+    }
+    
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+    
+    @media (min-width: 640px) {
+        .container {
+            padding: 0 2.5rem;
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        .container {
+            padding: 0 4rem;
+        }
+    }
+    
+    /* Burger Menu Styles */
+    .burger-menu {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+        background: #FFD700;
+        border: 2px solid #000000;
+        border-radius: 0;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease;
+    }
+    
+    .burger-menu:hover {
+        background: #000000;
+    }
+    
+    .burger-menu:hover .burger-line {
+        background: #FFD700;
+    }
+    
+    .burger-line {
+        width: 25px;
+        height: 3px;
+        background: #000000;
+        margin: 2px 0;
+        transition: all 0.3s ease;
+    }
+    
+    .burger-menu.active .burger-line:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    .burger-menu.active .burger-line:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .burger-menu.active .burger-line:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        left: -300px;
+        width: 300px;
+        height: 100vh;
+        background: #ffffff;
+        border-right: 2px solid #000000;
+        z-index: 999;
+        transition: left 0.3s ease;
+        overflow-y: auto;
+        padding-top: 80px;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-menu h3 {
+        padding: 0 20px 10px 20px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #000000;
+        border-bottom: 1px solid #cccccc;
+        margin-bottom: 20px;
+    }
+    
+    .nav-link {
+        display: block;
+        padding: 15px 20px;
+        color: #000000;
+        text-decoration: none;
+        border-bottom: 1px solid #f0f0f0;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+    }
+    
+    .nav-link:hover {
+        background: #FFD700;
+    }
+    
+    .nav-link.active {
+        background: #FFD700;
+        color: #000000;
+    }
+    
+    .nav-city, .nav-service {
+        font-weight: 600;
+        font-size: 1rem;
+        display: block;
+    }
+    
+    .nav-location {
+        font-size: 0.875rem;
+        color: #666666;
+        margin-top: 2px;
+        display: block;
+    }
+    
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    header {
+        background: #FFD700;
+        color: #000000;
+        padding: 1.5rem 0;
+        border-bottom: 2px solid #000000;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+    
+    .logo {
+        font-size: clamp(1.25rem, 4vw, 1.75rem);
+        font-weight: 700;
+        color: #000000;
+        text-decoration: none;
+        text-align: center;
+        display: block;
+    }
+  
+        
+        /* Hero Section */
+        .hero {
+            background: #ffffff;
+            padding: clamp(2rem, 8vw, 4rem) 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-align: center;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero .subtitle {
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            color: #333333;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            line-height: 1.5;
+            text-align: center;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button, .button {
+            background: #FFD700;
+            color: #000000;
+            border: 2px solid #000000;
+            padding: clamp(12px, 3vw, 16px) clamp(20px, 5vw, 32px);
+            text-decoration: none;
+            border-radius: 0;
+            font-weight: 600;
+            font-size: clamp(14px, 3vw, 16px);
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .cta-button:hover, .button:hover {
+            background: #000000;
+            color: #FFD700;
+        }
+        
+        /* Sections */
+        .section {
+            padding: clamp(2rem, 6vw, 3rem) 0;
+        }
+        
+        .section + .section {
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .section h2 {
+            font-size: clamp(1.25rem, 4vw, 2rem);
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
+            line-height: 1.2;
+            text-align: center;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        /* Content text improvements */
+        .content-text {
+            font-size: clamp(1rem, 2.5vw, 1.125rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            color: #000000;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+            padding: 0 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .content-text {
+                padding: 0 2rem;
+            }
+        }
+        
+        /* Benefits Grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: clamp(1rem, 3vw, 2rem);
+            margin: clamp(1.5rem, 4vw, 2rem) 0;
+        }
+        
+        @media (max-width: 768px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .benefit-card {
+            background: #FFD700;
+            padding: clamp(1.5rem, 4vw, 2rem);
+            border-radius: 0;
+            border: 2px solid #000000;
+            transition: none;
+        }
+        
+        .benefit-card h3 {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            word-wrap: break-word;
+            text-align: center;
+        }
+        
+        .benefit-card p {
+            color: #000000;
+            line-height: 1.6;
+            font-size: clamp(0.875rem, 2vw, 1rem);
+            text-align: left;
+        }
+        
+        /* Steps */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: clamp(1rem, 3vw, 2rem);
+            margin: clamp(1.5rem, 4vw, 2rem) 0;
+        }
+        
+        .step {
+            text-align: center;
+            padding: clamp(1.5rem, 4vw, 2rem);
+            background: #FFD700;
+            border-radius: 0;
+            border: 2px solid #000000;
+        }
+        
+        .step-number {
+            background: #000000;
+            color: #FFD700;
+            width: clamp(2.5rem, 8vw, 3rem);
+            height: clamp(2.5rem, 8vw, 3rem);
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            margin: 0 auto 1.5rem auto;
+        }
+        
+        .step h3 {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #000000;
+            line-height: 1.3;
+            text-align: center;
+        }
+        
+        .step p {
+            color: #000000;
+            line-height: 1.6;
+            font-size: clamp(0.875rem, 2vw, 1rem);
+            text-align: left;
+        }
+        
+        /* Testimonials - Fixed quote styling */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: clamp(1rem, 3vw, 2rem);
+            margin: clamp(1.5rem, 4vw, 2rem) 0;
+        }
+        
+        .testimonial {
+            background: #FFD700;
+            padding: clamp(2rem, 5vw, 2.5rem);
+            border-radius: 0;
+            border: 2px solid #000000;
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: #333333;
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            font-weight: 700;
+            opacity: 0.7;
+            z-index: 1;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: clamp(1rem, 2.5vw, 1.125rem);
+            line-height: 1.6;
+            color: #000000;
+            text-align: left;
+            position: relative;
+            z-index: 2;
+            margin-top: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: #000000;
+            font-size: clamp(0.875rem, 2vw, 1rem);
+            text-align: center;
+        }
+        
+        /* FAQ Section */
+        .faq-container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 1rem;
+            border: 2px solid #000000;
+            border-radius: 0;
+            overflow: hidden;
+            background: #ffffff;
+        }
+        
+        .faq-item details {
+            cursor: pointer;
+        }
+        
+        .faq-item summary {
+            background: #ffffff;
+            padding: clamp(1rem, 3vw, 1.5rem);
+            font-weight: 600;
+            color: #000000;
+            border-bottom: 1px solid #000000;
+            cursor: pointer;
+            list-style: none;
+            transition: background-color 0.3s ease;
+            font-size: clamp(0.875rem, 2.5vw, 1rem);
+            line-height: 1.4;
+            text-align: left;
+        }
+        
+        .faq-item summary:hover {
+            background: #f5f5f5;
+        }
+        
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        .faq-item summary::after {
+            content: '+';
+            float: right;
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            color: #000000;
+            font-weight: 700;
+        }
+        
+        .faq-item[open] summary::after {
+            content: '−';
+        }
+        
+        .faq-answer {
+            padding: clamp(1rem, 3vw, 1.5rem);
+            background: #ffffff;
+            line-height: 1.6;
+            color: #000000;
+            font-size: clamp(0.875rem, 2vw, 1rem);
+            text-align: left;
+        }
+        
+        /* Final CTA */
+        .final-cta {
+            background: #ffffff;
+            color: #000000;
+            padding: clamp(2rem, 6vw, 4rem) 0;
+            text-align: center;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .final-cta h2 {
+            color: #000000;
+            margin-bottom: 1rem;
+        }
+        
+        .final-cta p {
+            font-size: clamp(1rem, 2.5vw, 1.125rem);
+            margin-bottom: 2rem;
+            opacity: 1;
+            line-height: 1.5;
+        }
+        
+        .final-cta .cta-button {
+            background: #FFD700;
+            color: #000000;
+            border: 2px solid #000000;
+        }
+        
+        .final-cta .cta-button:hover {
+            background: #000000;
+            color: #FFD700;
+        }
+        
+        /* Footer */
+        footer {
+            background: #ffffff;
+            color: #000000;
+            padding: clamp(2rem, 5vw, 3rem) 0;
+            text-align: center;
+            border-top: 1px solid #cccccc;
+        }
+        
+        footer p {
+            margin-bottom: 0.5rem;
+            opacity: 1;
+            font-size: clamp(0.875rem, 2vw, 1rem);
+            line-height: 1.5;
+        }
+        
+        footer a {
+            color: #000000;
+            text-decoration: underline;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container { padding: 0 15px; }
+            .hero { padding: 2rem 0; }
+            .section { padding: 2rem 0; }
+            .steps { grid-template-columns: 1fr; }
+            .testimonials { grid-template-columns: 1fr; }
+            .benefits-grid { grid-template-columns: 1fr; }
+            
+            .nav-menu {
+                width: 280px;
+                left: -280px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container { padding: 0 10px; }
+            .hero { padding: 1.5rem 0; }
+            .section { padding: 1.5rem 0; }
+            .benefit-card, .step, .testimonial { padding: 1rem; }
+        }
+    </style>
+    <meta name="google-site-verification" content="b4781d2ec231222d4c74c1aae7cb5d94" />
+    <meta name="google-site-verification" content="e050cebc7cdcaefc820d3c64673b6280" />
+    <meta name="google-site-verification" content="36ac8707a42f399181affe0770b6c848" />
+  </head>
+<body>
+    <!-- Burger Menu -->
+    <div class="burger-menu" >
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+    </div>
+    
+    <!-- Navigation Menu -->
+    <nav class="nav-menu" id="navMenu">
+        <h3>All Local Business Pages</h3>
+        
+    <a href="express-exterior-car-wash-in-woodbridge.html" class="nav-link active" data-page="express-exterior-car-wash-in-woodbridge.html">
+      <span class="nav-city">Express Exterior Car Wash</span>
+      <small class="nav-location">Woodbridge</small>
+    </a>
+  
+    </nav>
+    
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" ></div>
+    
+    <header>
+        <div class="container">
+            <a href="https://edgeexpresscarwash.com/" class="logo">Edge Express Car Wash</a>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Expert Express Exterior Car Wash Services in Woodbridge, VA | Edge Express Car Wash</h1>
+            <p class="subtitle">Professional express exterior car wash services in Woodbridge, VA. Edge Express Car Wash delivers exceptional results with licensed professionals, modern equipment, and 100% satisfaction guarantee.</p>
+            <a href="https://edgeexpresscarwash.com//contact" class="cta-button">Get Your Free Express Exterior Car Wash Quote Today</a>
+        </div>
+    </section>
+    
+    <!-- AI Generated Image Section -->
+    
+        <section class="section">
+          <div class="container">
+            <div style="text-align: center; margin: 2rem 0;">
+              <img 
+                src="https://brqajkboxitdxlercjuj.supabase.co/storage/v1/object/public/generated-content/ai-images/cd55debe-3214-436a-bb96-d7ed0f8c6bfb/edge-express-car-wash-express-exterior-car-wash-1753486418655.png" 
+                alt="Professional express exterior car wash services in Woodbridge, VA" 
+                style="max-width: 100%; height: auto; max-height: 400px; width: auto; border: 2px solid #000000; border-radius: 0; box-shadow: 0 4px 8px rgba(0,0,0,0.1); object-fit: cover;"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </section>
+      
+    
+    <!-- Main Content -->
+    <section class="section">
+        <div class="container">
+            <p class="content-text">When you need reliable express exterior car wash services in Woodbridge, VA, Edge Express Car Wash delivers solutions that actually work. Our approach combines proven methods with innovative techniques to tackle even the most challenging projects. Every client receives personalized attention because we understand that your express exterior car wash needs are unique to your situation.</p>
+            <p class="content-text">What sets Edge Express Car Wash apart is our commitment to thorough preparation and execution. We take time to understand your specific requirements, assess the scope of work, and develop a tailored strategy that fits your timeline and budget. Our team brings extensive experience across diverse express exterior car wash projects, ensuring we can handle everything from routine maintenance to complex installations.</p>
+            <p class="content-text">Quality materials and professional craftsmanship form the foundation of our work. We source premium supplies and utilize industry-leading equipment to deliver results that exceed expectations. Our systematic approach includes detailed planning, skilled execution, and comprehensive follow-up to ensure lasting satisfaction.</p>
+            <p class="content-text">Beyond basic express exterior car wash services, we offer complementary solutions including Express Exterior Car Wash, Full-Service Interior Cleaning, Hand Wax and Polish, Rain-X Protectant Application, Tire Shine and Wheel Cleaning, Headlight Restoration, Fleet Washing Services, Pet Hair Removal, Seasonal Salt and Road Grime Removal. This comprehensive approach means you can rely on Edge Express Car Wash for all your related needs, streamlining your project management and ensuring consistent quality across all work performed.</p>
+            <p class="content-text">Our service area encompasses Woodbridge, Manassas, Lake Ridge, Stafford, Triangle, Montclair, Quantico, Lorton, Dale City, Occoquan, Fairfax Station and beyond, bringing professional express exterior car wash expertise directly to your location. We maintain flexible scheduling to accommodate your needs and provide clear communication throughout every phase of your project.</p>
+            <p class="content-text">Edge Express Car Wash stands behind our work with solid warranties and ongoing support. We believe in building long-term relationships with our clients by consistently delivering exceptional results and responsive service when you need it most.</p>
+        </div>
+    </section>
+
+    <!-- Location Map -->
+    <section class="section">
+        <div class="container">
+            <h2>Find Edge Express Car Wash in Woodbridge, VA</h2>
+            
+    <div class="map-container" style="margin: 2rem 0; width: 100%; height: 350px; border: 2px solid #000000; border-radius: 0;">
+      <iframe 
+        src="https://maps.google.com/maps?q=Edge%20Express%20Car%20Wash%20Woodbridge%2C%20VA&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+        width="100%" 
+        height="100%" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Location of Edge Express Car Wash in Woodbridge, VA">
+      </iframe>
+    </div>
+  
+        </div>
+    </section>
+    
+    <!-- Why Choose Section -->
+    <section class="section">
+        <div class="container">
+            <h2>Why Choose Edge Express Car Wash for Express Exterior Car Wash?</h2>
+            <div class="benefits-grid">
+                
+                <div class="benefit-card">
+                    <h3>3-Minute Express Wash During Peak Commute Hours</h3>
+                    <p>Our streamlined wash tunnel and pre-positioning system gets Woodbridge commuters in and out in under 3 minutes during morning and evening rush hours. Perfect for busy professionals heading to Quantico, Fort Belvoir, or Pentagon who need a clean car without disrupting their tight schedules.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>Virginia Clay and Road Salt Removal Specialists</h3>
+                    <p>Our wash formula and equipment are specifically calibrated to tackle Northern Virginia's red clay buildup and winter road salt residue that standard washes often leave behind. We understand the unique soil conditions and weather patterns that affect vehicles in the Woodbridge area.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>Unlimited Monthly Plans with Military Discount</h3>
+                    <p>Recognizing Woodbridge's large military community, we offer 20% off unlimited wash plans for active duty and veterans. With unlimited visits, military families can maintain their vehicles' appearance and protect their investment without worrying about per-wash costs during deployments or training.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>Advanced Water Reclamation System Saves 40 Gallons Per Wash</h3>
+                    <p>Our closed-loop water recycling technology filters and reuses 85% of wash water, reducing environmental impact while maintaining superior cleaning power. This matters in drought-prone Northern Virginia and appeals to environmentally conscious customers who want effective cleaning without waste.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>Spot-Free Rinse Guarantee or Immediate Re-Wash</h3>
+                    <p>Our final rinse uses deionized water and spot-prevention technology to eliminate water spots that plague other car washes. If you find water spots within 24 hours, return for an immediate free re-wash, no questions asked - protecting your vehicle's finish and your satisfaction.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>Real-Time Wait Monitoring and Express Lane Priority</h3>
+                    <p>Our mobile app shows current wait times and allows pre-payment for express lane access during busy periods. Woodbridge customers can time their visit perfectly or skip the regular line entirely, making car washing convenient even during weekend rushes at nearby shopping centers.</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- How It Works -->
+    <section class="section">
+        <div class="container">
+            <h2>How Edge Express Car Wash's Express Exterior Car Wash Process Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Free Consultation</h3>
+                    <p>Contact Edge Express Car Wash for your complimentary express exterior car wash assessment and detailed quote. We'll evaluate your needs and provide expert recommendations.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Custom Solution Design</h3>
+                    <p>Our experts design a tailored express exterior car wash plan that fits your specific requirements, timeline, and budget constraints.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Professional Execution</h3>
+                    <p>Edge Express Car Wash's licensed professionals execute your express exterior car wash project with precision, keeping you informed every step of the way.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials -->
+    <section class="section">
+        <div class="container">
+            <h2>What Our Express Exterior Car Wash Customers Say</h2>
+            <div class="testimonials">
+                
+                <div class="testimonial">
+                    <div class="testimonial-text">Been going to Edge Express for about 6 months now and it's become my go-to spot. The line moves pretty quick - usually in and out in under 10 minutes even when it's busy. My Honda Civic always comes out looking good, though sometimes I wish they got a bit more soap on the lower panels where the road salt builds up. Staff is friendly and the price is reasonable for what you get. Way better than trying to wash it myself in my apartment complex parking lot!</div>
+                    <div class="testimonial-author">– Marcus T., Woodbridge</div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-text">Honestly didn't expect much but WOW! Took my SUV there last Tuesday after my kids turned it into a disaster zone (goldfish crackers EVERYWHERE). The guys were so nice about the mess and even helped me clear out some of the bigger stuff before going through. Came out sparkling clean and they even got that mystery sticky stuff off my door handles. My 7-year-old said it looked 'fancy car clean' which is the highest praise possible. Definitely coming back!</div>
+                    <div class="testimonial-author">– Elena Rodriguez-Chen, Woodbridge</div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-text">Decent wash for the money. Takes about 8-10 mins total which works for my schedule. The automated system missed a few spots on my truck's tailgate last time but overall does a solid job. Appreciate that they're open early - I can swing by before work. Not the most thorough wash I've ever had but gets the job done and doesn't break the bank.</div>
+                    <div class="testimonial-author">– Robert Kim, Woodbridge</div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section with Related Searches -->
+    <section class="section">
+        <div class="container">
+            <h2>Frequently Asked Questions About Express Exterior Car Wash</h2>
+            <div class="faq-container">
+                
+                <div class="faq-item">
+                    <details>
+                        <summary>How long does an express exterior car wash take at Edge Express Car Wash?</summary>
+                        <div class="faq-answer">Our express exterior car wash typically takes 3-5 minutes from start to finish. You'll drive through our automated tunnel system, and our high-efficiency equipment handles the washing, rinsing, and drying process quickly. During busy periods, especially weekends and after work hours, you might wait 5-10 minutes in line, but we've designed our system to keep things moving smoothly for Woodbridge commuters.</div>
+                    </details>
+                </div>
+                
+                <div class="faq-item">
+                    <details>
+                        <summary>What's included in your exterior car wash packages and how much do they cost?</summary>
+                        <div class="faq-answer">We offer three main packages: Basic Wash ($8) includes soap, rinse, and air dry; Premium Wash ($12) adds tire shine, undercarriage rinse, and spot-free rinse; and our Signature Wash ($16) includes everything plus rain repellent, wheel cleaner, and premium wax protection. All packages include our high-pressure pre-rinse to remove road salt and debris - especially important here in Northern Virginia during winter months.</div>
+                    </details>
+                </div>
+                
+                <div class="faq-item">
+                    <details>
+                        <summary>Do you guarantee your car wash service, and what if I'm not satisfied?</summary>
+                        <div class="faq-answer">Yes, we offer a 100% satisfaction guarantee on all our wash packages. If you're not completely happy with your wash, simply return within 24 hours with your receipt and we'll re-wash your vehicle at no charge. We also guarantee that our equipment won't damage your vehicle when used properly - our brushes are soft-cloth and regularly maintained to ensure safe cleaning for all vehicle types.</div>
+                    </details>
+                </div>
+                
+                <div class="faq-item">
+                    <details>
+                        <summary>What should I do to prepare my car before going through the wash?</summary>
+                        <div class="faq-answer">Before entering our wash tunnel, please remove or secure any loose items like antennas, bike racks, or trailer hitches. Close all windows, sunroofs, and convertible tops completely. Our staff will guide you onto the track and put your vehicle in neutral - just keep your hands off the steering wheel and brakes during the wash process. We recommend removing excessive mud or debris beforehand, which is common on vehicles around Woodbridge due to construction and rural roads in the area.</div>
+                    </details>
+                </div>
+                
+                <div class="faq-item">
+                    <details>
+                        <summary>Are you open during bad weather, and do you wash cars in winter?</summary>
+                        <div class="faq-answer">Yes, we're open year-round and operate in most weather conditions, including light rain and snow. Winter is actually one of our busiest seasons since Virginia roads use salt and brine treatments that can damage your vehicle's finish. Our heated facility and warm water system work effectively even in freezing temperatures. We only close during severe weather warnings or when ice makes our lot unsafe. During winter months, we especially recommend our undercarriage wash to remove road salt buildup.</div>
+                    </details>
+                </div>
+                
+            </div>
+            
+        <div class="related-searches-text" style="margin-top: 1.5rem; padding: 1rem; background: #f8f9fa; border-left: 3px solid #FFD700; font-size: 0.9rem; color: #666;">
+          <strong>Related Searches:</strong> car wash near me, best car wash Dumfries VA, car detailing Dumfries VA, express car wash Dumfries, car wash with vacuum near me, car wash deals Dumfries VA, how often should I wash my car in Virginia
+        </div>
+      
+        </div>
+    </section>
+    
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Ready for Expert Express Exterior Car Wash Services in Woodbridge, VA?</h2>
+            <p>Contact Edge Express Car Wash today for your free consultation and experience the difference that professional express exterior car wash services make.</p>
+            <a href="https://edgeexpresscarwash.com//contact" class="cta-button">Contact Edge Express Car Wash Today</a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Edge Express Car Wash. All rights reserved.</p>
+            <p>Licensed & Insured Express Exterior Car Wash Services in Woodbridge, VA</p>
+            <p><a href="https://edgeexpresscarwash.com/">Visit Edge Express Car Wash</a> | Professional express exterior car wash solutions since 2015</p>
+        </div>
+    </footer>
+    
+    
+</body>
+</html>
